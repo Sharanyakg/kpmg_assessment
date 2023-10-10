@@ -12,6 +12,10 @@ resource "azurerm_subnet" "webserver" {
   address_prefixes     = ["10.0.2.0/24"]
 }
 
+data "azurerm_key_vault_secret" "credentials" {
+  name         = "password"
+  key_vault_id = "/subscriptions/xxxxx/resourceGroups/yyyyy/providers/Microsoft.KeyVault/vaults/zzzzz"
+}
 resource "azurerm_network_interface" "example" {
   name                = "test-nic"
   location            = azurerm_resource_group.example.location
@@ -30,7 +34,7 @@ resource "azurerm_windows_virtual_machine" "webservervm" {
   location            = azurerm_resource_group.example.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
-  admin_password      = var.password
+  admin_password      = data.azurerm_key_vault_secret.credentials.value
   availability_set_id = azurerm_availability_set.web_availabilty_set.id
   network_interface_ids = [
     azurerm_network_interface.example.id,
