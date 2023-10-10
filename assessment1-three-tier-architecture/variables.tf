@@ -13,11 +13,6 @@ variable "availability_set_name" {
   default="webserver"
 }
 
-variable "password" {
-    type="string"
-    sensitive   = true
-}
-
 variable "admin_username" {
   type="string"
   default = "terraformuser"
