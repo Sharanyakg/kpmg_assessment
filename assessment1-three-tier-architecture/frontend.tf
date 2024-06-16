@@ -1,7 +1,7 @@
 resource "azurerm_app_service_plan" "frontend" {
   name                = var.app_service_plan_name
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.assessment.location
+  resource_group_name = azurerm_resource_group.assessment.name
   sku {
     tier = "Standard"
     size = "S1"
@@ -10,8 +10,8 @@ resource "azurerm_app_service_plan" "frontend" {
 
 resource "azurerm_app_service" "frontend" {
   name                = "frontend-app"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.assessment.location
+  resource_group_name = azurerm_resource_group.assessment.name
   app_service_plan_id = azurerm_app_service_plan.frontend.id
 
   site_config {
