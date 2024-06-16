@@ -1,4 +1,4 @@
-#To get value of nested object
+#get value of nested object
 $jsoni = $( Read-Host "Input object, please" )
 $inpstr=$( Read-Host "Input key, please" )
 $inpobj=$jsoni | convertFrom-json
