@@ -4,7 +4,7 @@ resource "azurerm_sql_server" "assessment" {
   location                     = azurerm_resource_group.assessment.location
   version                      = "12.0"
   administrator_login          = data.azurerm_key_vault_secret.sql_admin_username.value
-  administrator_login_password = var.sql_admin_password
+  administrator_login_password = data.azurerm_key_vault_secret.sql_admin_password.value
 }
 
 resource "azurerm_sql_database" "assessment" {
