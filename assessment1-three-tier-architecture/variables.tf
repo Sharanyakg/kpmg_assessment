@@ -28,13 +28,13 @@ variable "sql_database_name" {
   default     = "test-sqldatabase"
 }
 
-variable "sql_admin_username" {
+variable "sql_admin_password_secret_name" {
   description = "The administrator username for the SQL server"
   type        = string
   default     = "sqladmin"
 }
 
-variable "sql_admin_password" {
+variable "sql_admin_password_secret_name" {
   description = "The administrator password for the SQL server"
   type        = string
   default     = "sqlpassword"
